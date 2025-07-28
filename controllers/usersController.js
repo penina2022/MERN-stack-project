@@ -58,7 +58,7 @@ const updateUser = asyncHandler(async (req, res) => {
     const { id, username, active, password, roles } = req.body
 
     //config data
-    if (!id || !username || !password || !Array.isArray(roles) || !roles.length ||typeof active !== 'boolean'){
+    if (!id || !username || !Array.isArray(roles) || !roles.length ||typeof active !== 'boolean'){
          return res.status(400).json({message: 'All feild are required'})
     }
 
@@ -87,7 +87,7 @@ const updateUser = asyncHandler(async (req, res) => {
 
     const updateUser = await user.save()
 
-    res.json({ message: `${updatedUser.username} updated` })
+    res.json({ message: `${updateUser.username} updated` })
 })
 
 // @desc Delete a user
