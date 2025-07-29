@@ -57,10 +57,10 @@ const creatNewNote = asyncHandler(async (req, res) => {
 // @access Private
 const updateNote = asyncHandler(async (req, res) => {
     //getting the notes new info from the frontend
-    const { id, userinfo, title, text, completed } = req.body
+    const { id, user, title, text, completed } = req.body
 
     //config data
-    if (!id || !userinfo || !title || !text ||typeof completed !== 'boolean'){
+    if (!id || !user || !title || !text ||typeof completed !== 'boolean'){
          return res.status(400).json({message: 'All feild are required'})
     }
 
@@ -78,7 +78,7 @@ const updateNote = asyncHandler(async (req, res) => {
     }
 
     //updating the existing note
-    note.user = userinfo
+    note.user = user
     note.title = title
     note.text = text
     note.completed = completed
